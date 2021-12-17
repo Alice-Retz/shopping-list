@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState } from 'react';
 
 export default function Item({ item, handleChange, onDelete }) {
@@ -7,6 +8,7 @@ export default function Item({ item, handleChange, onDelete }) {
     itemContent = (
       <>
         <input
+          placeholder={`Edit ${item.text}`}
           value={item.text}
           onChange={(e) => {
             handleChange({
@@ -16,7 +18,11 @@ export default function Item({ item, handleChange, onDelete }) {
           }}
         />
 
-        <button type="button" onClick={() => setIsEditing(false)}>
+        <button
+          aria-label={`Update item`}
+          type="button"
+          onClick={() => setIsEditing(false)}
+        >
           Save
         </button>
       </>
@@ -27,7 +33,11 @@ export default function Item({ item, handleChange, onDelete }) {
         <p style={{ textDecoration: item.done ? 'line-through' : null }}>
           {item.text}
         </p>
-        <button type="button" onClick={() => setIsEditing(true)}>
+        <button
+          aria-label={`${item.text} edit button`}
+          type="button"
+          onClick={() => setIsEditing(true)}
+        >
           Edit
         </button>
       </>
@@ -47,7 +57,11 @@ export default function Item({ item, handleChange, onDelete }) {
         }}
       />
       {itemContent}
-      <button type="button" onClick={() => onDelete(item.id)}>
+      <button
+        aria-label={`${item.text} delete button`}
+        type="button"
+        onClick={() => onDelete(item.id)}
+      >
         Delete
       </button>
     </>

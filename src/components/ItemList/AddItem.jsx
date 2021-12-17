@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState } from 'react';
 
 export default function AddItem({ onAddItem }) {
@@ -16,7 +17,9 @@ export default function AddItem({ onAddItem }) {
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
-      <button type="submit">Add Item</button>
+      <button aria-label="Add New Item" type="submit">
+        Add Item
+      </button>
     </form>
   );
 }
