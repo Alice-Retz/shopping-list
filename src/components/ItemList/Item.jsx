@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function Item({ item, onChange, onDelete }) {
+export default function Item({ item, handleChange, onDelete }) {
   const [isEditing, setIsEditing] = useState(false);
   let itemContent;
   if (isEditing) {
@@ -9,7 +9,7 @@ export default function Item({ item, onChange, onDelete }) {
         <input
           value={item.text}
           onChange={(e) => {
-            onChange({
+            handleChange({
               ...item,
               text: e.target.value,
             });
@@ -40,7 +40,7 @@ export default function Item({ item, onChange, onDelete }) {
         type="checkbox"
         checked={item.done}
         onChange={(e) => {
-          onChange({
+          handleChange({
             ...item,
             done: e.target.checked,
           });
